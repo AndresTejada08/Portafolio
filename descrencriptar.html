@@ -16,13 +16,13 @@
     <main>
         <div class="menu-container">
             <ul>
-              <li><a href="#">Encriptar</a></li>
-              <li><a href="descrencriptar.html">Desencriptar</a></li>
+              <li><a href="index.html">Encriptar</a></li>
+              <li><a href="#">Desencriptar</a></li>
             </ul>
           </div>
           
           <div class="form-container">
-            <h2>Encriptador de Textos</h2>
+            <h2>Desencriptador de Textos</h2>
             <form>
               <input type="text" placeholder="Ingresa tu mensaje" />
               <br /><br />
@@ -34,33 +34,33 @@
     <footer>
 
     </footer>
-    
+
     <script>
-        // Función para encriptar el texto
-        function encriptar() {
+        // Función para desencriptar el texto
+        function desencriptar() {
             var resultado = "";
-            for (var i = 0; i < texto.value.length; i++) {
+            for (let i = 0; i < texto.value.length; i++) {
                 var codigo = texto.value.charCodeAt(i);
                 if (codigo >= 65 && codigo <= 90) {
-                    // Si el caracter es una letra mayúscula
-                    resultado += String.fromCharCode(((codigo - 65 + clave) % 26) + 65);
+                // Si el caracter es una letra mayúscula
+                resultado += String.fromCharCode(((codigo - 65 - clave + 26) % 26) + 65);
                 } else if (codigo >= 97 && codigo <= 122) {
-                    // Si el caracter es una letra minúscula
-                    resultado += String.fromCharCode(((codigo - 97 + clave) % 26) + 97);
+                // Si el caracter es una letra minúscula
+                resultado += String.fromCharCode(((codigo - 97 - clave + 26) % 26) + 97);
                 } else {
-                    // Si el caracter no es una letra (devuelve lo mismo)
-                    resultado += texto.value.charAt(i);
+                // Si el caracter no es una letra (como un espacio en blanco)
+                resultado += texto.value.charAt(i);
                 }
             }
-            // Mostramos el resultado;
-            alert("El texto encriptado es: " + resultado);
+            // Mostramos el resultado
+            alert("El texto desencriptado es: " + resultado);
         }
     
-        // Ejemplo de texto encriptado
+        // Ejemplo de texto desencriptado
         var texto = document.querySelector("input");
         var clave = 3;
         var boton = document.querySelector("button");
-        boton.onclick = encriptar;
+        boton.onclick = desencriptar;
     </script>
 </body>
 </html>
